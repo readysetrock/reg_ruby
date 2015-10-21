@@ -1,0 +1,20 @@
+<h1>Registration</h1>
+
+<% if flash[:success] %>
+	<p class="success"><%= flash[:success] %></p>
+<% end %>
+
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p class="error"><%= error %></p>
+	<% end %>
+<% end %>
+
+<form action="/users/create" method="post">
+	<p>Name: <input type="text" name="kitty[name]"></p>
+	<p>Email: <input type="text" name="kitty[email]"></p>
+	<p>Password: <input type="password" name="kitty[password]"></p>
+	<p>Confirm Password: <input type="password" name="kitty[password_confirmation]"></p>
+	<p><input type="submit" value="Register"></p>
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
